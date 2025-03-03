@@ -1,0 +1,53 @@
+/* src/app/features/calendar/components/appointment-item/appointment-item.component.scss */
+.appointment-item {
+    margin: 4px 0;
+    padding: 8px;
+    border-radius: 4px;
+    color: white;
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+    
+    &:active {
+      cursor: grabbing;
+    }
+  }
+  
+  .appointment-content {
+    overflow: hidden;
+  }
+  
+  .appointment-title {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .appointment-time {
+    font-size: 0.85em;
+    opacity: 0.9;
+  }
+  
+  .appointment-actions {
+    display: none;
+  }
+  
+  .appointment-item:hover .appointment-actions {
+    display: flex;
+  }
+  
+  .edit-button, .delete-button {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    
+    mat-icon {
+      font-size: 16px;
+      height: 16px;
+      width: 16px;
+      line-height: 16px;
+    }
+  }

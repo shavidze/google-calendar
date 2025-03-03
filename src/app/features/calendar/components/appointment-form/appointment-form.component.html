@@ -1,0 +1,107 @@
+<!-- src/app/features/calendar/components/appointment-form/appointment-form.component.html -->
+<div class="google-appointment-form">
+  <div class="form-header">
+    <h2 class="form-title">{{ isEditMode ? 'Edit event' : 'Add event' }}</h2>
+    <button mat-icon-button class="close-button" (click)="onCancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-content">
+      <!-- Title -->
+      <mat-form-field appearance="outline" class="full-width title-field">
+        <input 
+          matInput 
+          formControlName="title" 
+          placeholder="Add title" 
+          cdkFocusInitial>
+        <mat-error *ngIf="appointmentForm.get('title')?.hasError('required')">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Date Inputs -->
+      <div class="date-time-section">
+        <mat-icon class="section-icon">schedule</mat-icon>
+        <div class="date-time-fields">
+          <div class="date-time-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Start date</mat-label>
+              <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+              <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>End date</mat-label>
+              <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+              <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="description-section">
+        <mat-icon class="section-icon">notes</mat-icon>
+        <mat-form-field appearance="outline" class="description-field">
+          <mat-label>Description</mat-label>
+          <textarea 
+            matInput 
+            formControlName="description" 
+            placeholder="Add description" 
+            rows="3"></textarea>
+        </mat-form-field>
+      </div>
+
+      <!-- Color Selection -->
+      <div class="color-section">
+        <mat-icon class="section-icon">palette</mat-icon>
+        <mat-form-field appearance="outline" class="color-field">
+          <mat-label>Event color</mat-label>
+          <mat-select formControlName="color">
+            <mat-select-trigger>
+              <div class="color-preview-container">
+                <div class="color-preview" [style.backgroundColor]="appointmentForm.get('color')?.value"></div>
+                <span>{{ getSelectedColorLabel() }}</span>
+              </div>
+            </mat-select-trigger>
+            <mat-option *ngFor="let color of colorOptions" [value]="color.value">
+              <div class="color-option">
+                <div class="color-swatch" [style.backgroundColor]="color.value"></div>
+                <span>{{ color.viewValue }}</span>
+              </div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button 
+        *ngIf="isEditMode" 
+        type="button" 
+        mat-button 
+        color="warn" 
+        class="delete-button" 
+        (click)="onDelete()">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+      
+      <div class="right-actions">
+        <button type="button" mat-button (click)="onCancel()">Cancel</button>
+        <button 
+          type="submit" 
+          mat-raised-button 
+          color="primary" 
+          [disabled]="appointmentForm.invalid"
+          class="save-button">
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

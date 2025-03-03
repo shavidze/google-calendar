@@ -1,0 +1,106 @@
+/* src/app/features/calendar/components/calendar-container/calendar-container.component.scss */
+.calendar-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 1px solid #dadce0;
+  background-color: #fff;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  
+  mat-icon {
+    color: #4285f4;
+    margin-right: 8px;
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+  
+  .app-name {
+    font-size: 22px;
+    font-weight: 400;
+    color: #5f6368;
+  }
+}
+
+.today-btn {
+  margin-right: 16px;
+}
+
+.nav-buttons {
+  display: flex;
+  margin-right: 16px;
+  
+  .nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background-color: #f1f3f4;
+    }
+    
+    mat-icon {
+      color: #5f6368;
+    }
+  }
+}
+
+.current-period {
+  font-size: 22px;
+  font-weight: 400;
+  color: #3c4043;
+  margin: 0;
+}
+
+.create-btn {
+  background-color: #1a73e8;
+  color: white;
+  margin-left: 16px;
+  padding: 0 24px;
+  
+  &:hover {
+    background-color: #1765cc;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  }
+  
+  mat-icon {
+    margin-right: 8px;
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+  }
+}
+
+.calendar-view-container {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}

@@ -1,0 +1,60 @@
+<div class="calendar-container">
+  <header class="calendar-header">
+    <div class="header-left">
+      <!-- Logo and App Name -->
+      <div class="app-logo">
+        <mat-icon>calendar_today</mat-icon>
+        <span class="app-name">Calendar</span>
+      </div>
+      
+      <!-- Today Button -->
+      <button class="google-button today-btn" (click)="today()" matTooltip="Today">
+        Today
+      </button>
+      
+      <!-- Navigation Buttons -->
+      <div class="nav-buttons">
+        <button class="nav-btn" (click)="previousPeriod()" matTooltip="Previous">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button class="nav-btn" (click)="nextPeriod()" matTooltip="Next">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+      <!-- Current Period Display -->
+      <h2 class="current-period">{{ getViewTitle(currentDate$ | async) }}</h2>
+    </div>
+    
+    <div class="header-right">
+      <!-- View Switcher -->
+      <div class="view-switcher">
+        <button 
+          [class.active]="currentView === 'month'"
+          (click)="switchView('month')">
+          Month
+        </button>
+        <button 
+          [class.active]="currentView === 'week'"
+          (click)="switchView('week')">
+          Week
+        </button>
+        <button 
+          [class.active]="currentView === 'day'"
+          (click)="switchView('day')">
+          Day
+        </button>
+      </div>
+      
+      <!-- Create Button -->
+      <button class="google-button create-btn" (click)="openAppointmentForm()">
+        Create
+      </button>
+    </div>
+  </header>
+
+  <div class="calendar-view-container">
+    <app-month-view *ngIf="currentView === 'month'"></app-month-view>
+    <app-week-view *ngIf="currentView === 'week'"></app-week-view>
+    <app-day-view *ngIf="currentView === 'day'"></app-day-view>
+  </div>
+</div>

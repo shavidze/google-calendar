@@ -1,0 +1,38 @@
+<!-- src/app/features/calendar/components/month-view/month-view.component.html -->
+<div class="google-month-view">
+  <div class="weekday-header">
+    <div class="weekday" *ngFor="let day of weekdays">{{ day }}</div>
+  </div>
+
+  <div class="calendar-grid" *ngIf="calendarDays$ | async as days">
+    <div 
+      *ngFor="let dayData of days" 
+      class="calendar-day" 
+      [class.today]="isToday(dayData.date)"
+      [class.other-month]="!isCurrentMonth(dayData.date, days[15].date)"
+      (click)="onDayClick(dayData.date)">
+      
+      <div class="day-header" [class.today-circle]="isToday(dayData.date)">
+        <span class="day-number">{{ dayData.date.getDate() }}</span>
+      </div>
+      
+      <div 
+        cdkDropList
+        [cdkDropListData]="dayData.appointments"
+        (cdkDropListDropped)="drop($event, dayData.date)"
+        class="appointment-list">
+        
+        <app-appointment-item 
+          *ngFor="let appointment of dayData.appointments" 
+          [appointment]="appointment"
+          cdkDrag
+          class="fade-in">
+        </app-appointment-item>
+        
+        <div class="add-event-hint" *ngIf="dayData.appointments.length === 0">
+          <span class="hint-text" *ngIf="isCurrentMonth(dayData.date, days[15].date)">Click to add</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

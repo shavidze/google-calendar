@@ -1,0 +1,14 @@
+<div class="appointment-item" [style.backgroundColor]="appointment.color || '#3f51b5'">
+    <div class="appointment-content">
+      <div class="appointment-title">{{ appointment.title }}</div>
+      <div class="appointment-time">{{ getTimeString(appointment.startDate) }}</div>
+    </div>
+    <div class="appointment-actions">
+      <button mat-icon-button (click)="editAppointment($event)" class="edit-button">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteAppointment($event)" class="delete-button">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>

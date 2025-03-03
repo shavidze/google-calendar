@@ -25,11 +25,12 @@ import { DayViewComponent } from '../views/day-view/day-view.component';
     MatDialogModule,
     MatTooltipModule,
     MonthViewComponent,
-    MonthViewComponent, WeekViewComponent, DayViewComponent
+    WeekViewComponent, 
+    DayViewComponent,
+    AppointmentFormComponent
   ],
   templateUrl: './calendar-container.component.html',
   styleUrls: ['./calendar-container.component.scss'],
-  
 })
 export class CalendarContainerComponent implements OnInit {
   currentDate$: Observable<Date>;
@@ -86,7 +87,15 @@ export class CalendarContainerComponent implements OnInit {
     dialogConfig.panelClass = 'appointment-dialog';
     dialogConfig.data = { date: new Date() };
     
-    this.dialog.open(AppointmentFormComponent, dialogConfig);
+    const dialogRef = this.dialog.open(AppointmentFormComponent, dialogConfig);
+    
+    dialogRef.afterOpened().subscribe(() => {
+      console.log('Dialog opened successfully');
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed with result:', result);
+    });
   }
 
   switchView(view: 'month' | 'week' | 'day'): void {

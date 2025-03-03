@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppointmentService } from '../../../../core/services/appointment.service';
 import { Appointment } from '../../../../core/models/appointment';
@@ -29,6 +30,7 @@ interface ColorOption {
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatSelectModule,
     MatIconModule
   ],

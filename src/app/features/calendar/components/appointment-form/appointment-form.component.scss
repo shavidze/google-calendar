@@ -1,15 +1,16 @@
 /* src/app/features/calendar/components/appointment-form/appointment-form.component.scss */
 .google-appointment-form {
   font-family: 'Roboto', sans-serif;
+  padding: 3px 12px;
 }
 
 .form-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid #dadce0;
   padding: 16px 24px;
-  margin: -24px -24px 24px -24px;
+  
 }
 
 .form-title {
@@ -17,6 +18,8 @@
   font-weight: 400;
   color: #3c4043;
   margin: 0;
+  text-align: center;
+  flex: 3;
 }
 
 .form-content {
@@ -101,7 +104,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 16px;
+  padding: 16px 8px;
   border-top: 1px solid #dadce0;
 }
 

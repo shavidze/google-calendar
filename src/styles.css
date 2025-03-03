@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 html, body {
   height: 100%;
   margin: 0;
@@ -32,35 +34,6 @@ html, body {
               0 3px 14px 2px rgba(0,0,0,0.12);
 } 
 
-.view-switcher {
-    display: inline-flex;
-    background-color: white;
-    border: 1px solid #dadce0;
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 0 8px;
-  
-    button {
-      background: none;
-      border: none;
-      padding: 8px 16px;
-      margin: 0;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
-      color: #3c4043;
-      transition: background-color 0.2s;
-  
-      &.active {
-        background-color: #e8f0fe;
-        color: #1a73e8;
-      }
-  
-      &:hover:not(.active) {
-        background-color: #f6f9fe;
-      }
-    }
-  }
   
   /* Calendar-specific transitions */
   .fade-in {
@@ -80,3 +53,77 @@ html, body {
     from { transform: translateY(10px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
+
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 8px !important;
+}
+
+
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Google Calendar-like button styles */
+.google-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  color: #3c4043;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 36px;
+  letter-spacing: 0.25px;
+  padding: 0 16px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background-color: #f6f9fe;
+    border-color: #d2e3fc;
+  }
+
+  &:active {
+    background-color: #e8f0fe;
+  }
+}
+
+/* View switcher styles */
+.view-switcher {
+  display: inline-flex;
+  background-color: white;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 8px;
+
+  button {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3c4043;
+    transition: background-color 0.2s;
+
+    &.active {
+      background-color: #e8f0fe;
+      color: #1a73e8;
+    }
+
+    &:hover:not(.active) {
+      background-color: #f6f9fe;
+    }
+  }
+}
+
